@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', ['as' => '/', 'uses' => 'LoginController@getLogin']);
+Route::post('/login', ['as' => 'login', 'uses' => 'LoginController@postLogin']);
+Route::get('/noPermission', function (){
+    return view('permission.noPermission');
 });
 
-Route::get('/dashboard', function () {
-    return view('layouts.master');
+Route::group(['middleware' => ['authen']], function () {
+    Route::get('/logout', ['as' => 'logout', 'uses' => 'LoginController@getLogout']);
+
+    Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@dashboard']);
+});
+
+Route::group(['middleware' => ['authen', 'roles'], 'roles' => ['admin']], function () {
+    Route::get('/createUser', function () {
+        echo 'This is text';
+    });
 });
