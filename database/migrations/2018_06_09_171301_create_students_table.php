@@ -19,7 +19,8 @@ class CreateStudentsTable extends Migration
             $table->string('last_name', 20);
             $table->boolean('sex');
             $table->date('dob');
-            $table->string('email', 100)->nullable();
+            $table->string('email', 50)->nullable();
+            $table->string('rac', 50)->nullable();
             $table->string('status');
             $table->string('nationality', 50)->nullable();
             $table->string('national_card', 50)->nullable();
@@ -29,7 +30,7 @@ class CreateStudentsTable extends Migration
             $table->string('commune', 50)->nullable();
             $table->string('district', 50)->nullable();
             $table->string('province', 50)->nullable();
-            $table->string('current_address', 100)->nullable();
+            $table->string('current_address', 200)->nullable();
             $table->date('date_registered');
             $table->integer('user_id')->unsigned();
             $table->string('photo', 200)->nullable();

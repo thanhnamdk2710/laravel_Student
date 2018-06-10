@@ -14,7 +14,7 @@ class CreateReceiptsTable extends Migration
     public function up()
     {
         Schema::create('receipts', function (Blueprint $table) {
-            $table->integer('receipt_id');
+            $table->integer('id');
         });
     }
 
